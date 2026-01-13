@@ -1,11 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Leet Share</title>
-</head>
-<body>
-  <p>Welcome to Leet Share!</p>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Leet Share</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <span>
+          <a href="/leet-share" class="site-name"
+            >Leet<span class="second">Share</span></a
+          >
+        </span>
+        <span>
+          <button>Login</button>
+          <button>☀️Toggle</button>
+        </span>
+      </nav>
+    </header>
+    <main class="homepage">
+      <section class="site-info">
+        <h1 class="site-name">Leet<span class="second">Share</span></h1>
+        <div style="text-align: center">
+          <p>
+            LeetShare is a website for sharing your
+            <a href="https://leetcode.com">leetcode</a> solutions.
+          </p>
+          <p>Everyone can share their own solutions and view others.</p>
+        </div>
+      </section>
+      <search class="problem-search">
+        <input
+          type="text"
+          placeholder="Search LeetCode problems..."
+          class="search-bar"
+        />
+        <button class="submit">GO!</button>
+      </search>
+      <div>
+        <button class="go-daily">Go Daily ➡️</button>
+      </div>
+    </main>
+    <footer>
+      <p>Made with ❤️ by revival0728</p>
+    </footer>
+  </body>
 </html>
