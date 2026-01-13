@@ -9,6 +9,10 @@
       href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <!-- // TODO: Add more languages as needed -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/c.min.js"></script>
+    <link rel="stylesheet" href="hljs.css" />
     <link rel="stylesheet" href="style.css" />
     <title>Leet Share</title>
   </head>
@@ -46,12 +50,28 @@
         <button class="submit">GO!</button>
       </search>
       <div>
-        <button class="go-daily">Go Daily ➡️</button>
+        <button id="go-daily" class="go-daily">Go Daily ➡️</button>
       </div>
     </main>
     <footer>
       <p>Made with ❤️ by revival0728</p>
     </footer>
+
+    <template id="problem-container-template">
+      <div class="problem-container">
+        <h2 class="problem-id">
+          <span>Problem ID: </span>
+          <span id="problem-id"></span>
+        </h2>
+        <a class="problem-link" target="_blank" rel="noopener noreferrer"
+          >View on LeetCode</a
+        >
+        <pre><code></code></pre>
+        <div class="solution-list"></div>
+        <button class="view-solutions">View Other Solutions</button>
+      </div>
+    </template>
+    <script src="utils.js"></script>
     <script src="ui.js"></script>
   </body>
 </html>

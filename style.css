@@ -61,6 +61,13 @@ nav.navbar {
   width: calc(100% - 40px);
 }
 
+main {
+  --padding: min(5vh, 20px);
+  min-height: calc(100% - var(--nav-height) - 2 * var(--padding));
+  padding: var(--padding) 0;
+  margin-bottom: -50px;
+}
+
 nav button {
   background: none;
   border: none;
@@ -114,14 +121,10 @@ section.site-info h1 {
 }
 
 main.homepage {
-  --padding: min(5vh, 20px);
-  min-height: calc(100% - var(--nav-height) - 2 * var(--padding));
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: min(3vh, 20px);
-  padding: var(--padding) 0;
-  margin-bottom: -50px;
 }
 
 search.problem-search {
@@ -174,4 +177,14 @@ main.homepage .go-daily {
   border: 2px solid var(--dark-secondary-color);
   background-color: var(--dark-secondary-color);
   color: var(--dark-font-color);
+}
+
+main.problem-page {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+main.problem-page .problem-container {
+  width: 60%;
 }
