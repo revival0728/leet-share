@@ -1,11 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Leet Share</title>
-</head>
-<body>
-  <p>Welcome to Leet Share!</p>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <!-- Add more languages as needed -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/c.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/cpp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/rust.min.js"></script>
+    <link rel="stylesheet" href="hljs.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Leet Share</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <span>
+          <a class="site-name" id="home-link"
+            >Leet<span class="second">Share</span></a
+          >
+        </span>
+        <span>
+          <button id="theme-toggler">Light</button>
+        </span>
+      </nav>
+    </header>
+    <main></main>
+    <footer>
+      <p>
+        <span
+          ><a href="https://github.com/revival0728/leet-share">GitHub</a></span
+        >
+        <span>Made by revival0728</span>
+      </p>
+    </footer>
+
+    <template id="homepage-container-template">
+      <div class="homepage-container">
+        <section class="site-info">
+          <h1 class="site-name">Leet<span class="second">Share</span></h1>
+          <div style="text-align: center">
+            <p>
+              LeetShare is a website for sharing my
+              <a href="https://leetcode.com">leetcode</a> solutions.
+            </p>
+            <p>They might not be the best, but I will try mine.</p>
+          </div>
+        </section>
+        <search class="problem-search">
+          <form class="search-form" method="get">
+            <input
+              type="text"
+              name="p"
+              placeholder="Search LeetCode problems..."
+              class="search-bar"
+            />
+            <button type="submit" class="submit">GO!</button>
+          </form>
+        </search>
+        <div>
+          <button id="view-solutions" class="view-solutions">
+            View Solutions ➡️
+          </button>
+        </div>
+      </div>
+    </template>
+
+    <template id="problemset-container-template">
+      <section class="problemset">
+        <h2>All Problems</h2>
+        <search class="problem-search">
+          <form class="search-form" method="get">
+            <input
+              type="text"
+              name="p"
+              placeholder="Search LeetCode problems..."
+              class="search-bar"
+            />
+            <button type="submit" class="submit">GO!</button>
+          </form>
+        </search>
+        <div class="problem-list"></div>
+      </section>
+    </template>
+
+    <template id="problemset-element-template">
+      <article class="problem">
+        <span class="problem-id"></span>
+        <span>
+          <a class="problem-lnk">view on leetcode</a>
+          <a class="solution-lnk">view solution</a>
+        </span>
+      </article>
+    </template>
+
+    <template id="problem-container-template">
+      <section class="problem-container">
+        <h2 class="problem-id"></h2>
+        <a class="problem-link" target="_blank" rel="noopener noreferrer"
+          >View on LeetCode</a
+        >
+        <div class="solution-list"></div>
+        <button class="view-solutions">View Other Solutions</button>
+      </section>
+    </template>
+
+    <template id="solution-container-template">
+      <article class="solution-container">
+        <h3 class="language"></h3>
+        <p class="time">time: <span></span></p>
+        <p class="memory">memory: <span></span></p>
+        <details>
+          <summary>view solution</summary>
+          <pre><code></code></pre>
+        </details>
+      </article>
+    </template>
+
+    <script src="config.js"></script>
+    <script src="firebase.js"></script>
+    <script src="utils.js"></script>
+    <script src="ui.js"></script>
+  </body>
 </html>
