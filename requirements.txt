@@ -1,0 +1,3 @@
+firebase_admin == 7.*
+termcolor == 3.*
+python-dotenv == 1.*
