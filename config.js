@@ -10,4 +10,4 @@ leetshareConfig.firebaseConfig = {
   measurementId: "G-YRSQWYZRDM",
 };
 
-leetshareConfig.rootPath = "/";
+leetshareConfig.rootPath = "/leet-share/";
