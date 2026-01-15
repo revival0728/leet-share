@@ -75,8 +75,9 @@ function fillProblemsetTemplate(problemset = []) {
     probClone.querySelector(".problem-lnk").href =
       "https://leetcode.com/problems/" +
       prob.id.toLowerCase().replaceAll(" ", "-");
-    probClone.querySelector(".solution-lnk").href =
-      "/leet-share/?p=" + encodeURIComponent(prob.id);
+    probClone.querySelector(".solution-lnk").href = `${
+      leetshareConfig.rootPath
+    }?p=${encodeURIComponent(prob.id)}`;
     probList.appendChild(probClone);
   }
   return document.importNode(pst.content, true);

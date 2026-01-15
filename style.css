@@ -11,6 +11,8 @@
   --dark-primary-color: #1e1e1e;
   --dark-secondary-color: #3a3a3a;
   --dark-font-color: #e0e0e0;
+
+  --font-size: 16px;
 }
 
 body {
@@ -19,6 +21,7 @@ body {
   font-family: var(--mono-font), -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   margin: 0;
+  font-size: var(--font-size);
   height: 100vh;
 }
 
@@ -30,7 +33,7 @@ body.dark-mode {
 footer {
   background-color: var(--primary-color);
   text-align: center;
-  font-size: min(2vh, 14px);
+  font-size: 14px;
   color: var(--font-color);
   height: 40px;
   padding: 0 20px;
@@ -62,7 +65,7 @@ nav.navbar {
 }
 
 main {
-  --padding: min(5vh, 20px);
+  --padding: 20px;
   min-height: calc(100% - var(--nav-height) - 2 * var(--padding));
   padding: var(--padding) 0;
   margin-bottom: -50px;
@@ -72,7 +75,7 @@ nav button {
   background: none;
   border: none;
   font-family: var(--mono-font);
-  font-size: min(4vh, 16px);
+  font-size: 16px;
   cursor: pointer;
   color: var(--font-color);
 }
@@ -102,6 +105,10 @@ footer span:nth-of-type(1)::before {
   color: var(--font-color);
 }
 
+.site-name#home-link {
+  cursor: pointer;
+}
+
 .dark-mode .site-name {
   color: var(--dark-font-color);
 }
@@ -111,7 +118,7 @@ footer span:nth-of-type(1)::before {
 }
 
 nav .site-name {
-  font-size: min(5vh, 20px);
+  font-size: 20px;
 }
 
 h1.site-name {
@@ -122,7 +129,7 @@ section.site-info {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: min(1vh, 12px);
+  gap: 12px;
   margin-bottom: 5vh;
 }
 
@@ -131,31 +138,43 @@ section.site-info h1 {
 }
 
 main.homepage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+main.homepage .homepage-container {
+  width: 40%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: min(3vh, 20px);
+  gap: 3vh;
 }
 
 search.problem-search {
   display: flex;
   flex-direction: row;
-  gap: min(2vh, 12px);
-  min-width: 40%;
+  gap: 12px;
+  width: 100%;
+}
+
+search.problem-search form.search-form {
+  width: 100%;
 }
 
 search.problem-search input {
   flex-grow: 1;
   font-family: var(--mono-font);
-  font-size: min(3vh, 16px);
-  padding: min(1.5vh, 8px);
+  font-size: 16px;
+  padding: 8px;
   border: 2px solid var(--secondary-color);
   border-radius: 4px;
+  width: calc(100% - 90px);
 }
 
 search.problem-search button {
-  font-size: min(3vh, 16px);
-  padding: min(1.5vh, 8px) min(2vh, 12px);
+  font-size: 16px;
+  padding: 8px 12px;
   border: 2px solid var(--secondary-color);
   background-color: var(--secondary-color);
   border-radius: 4px;
@@ -175,8 +194,8 @@ search.problem-search button {
 }
 
 main.homepage .view-solutions {
-  font-size: min(4vh, 18px);
-  padding: min(2vh, 10px) min(3vh, 16px);
+  font-size: 18px;
+  padding: 10px 16px;
   border: 2px solid var(--secondary-color);
   background-color: var(--secondary-color);
   border-radius: 4px;
@@ -206,13 +225,13 @@ main.problem-page .problem-container {
 .problem-container .solution-list {
   display: flex;
   flex-direction: column;
-  gap: min(1vh, 8px);
+  gap: 8px;
   margin: 3vh 0 5vh 0;
 }
 
 .problem-container button.view-solutions {
-  font-size: 1.5vh;
-  padding: min(2vh, 10px) min(3vh, 16px);
+  font-size: calc(var(--font-size) - 2px);
+  padding: 10px 16px;
   border: 2px solid var(--secondary-color);
   background-color: var(--secondary-color);
   border-radius: 4px;
@@ -241,7 +260,7 @@ main.problemset-page .problemset {
 .problemset .problem-list {
   display: flex;
   flex-direction: column;
-  gap: min(1vh, 8px);
+  gap: 8px;
   margin: 3vh 0 5vh 0;
   align-items: center;
 }
@@ -250,8 +269,15 @@ main.problemset-page .problemset {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: min(1vh, 8px);
+  padding: 8px;
   border: 1px solid var(--secondary-color);
   border-radius: 4px;
   width: 95%;
+}
+
+pre code.hljs {
+  --code-size: var(--font-size) * 0.85;
+  --code-gap: 5px;
+  font-size: calc(--code-size);
+  line-height: calc(var(--code-size) + var(--code-gap) * 2);
 }

@@ -48,7 +48,7 @@ def init() -> CmdResult:
   # db structure
   # collections: problems, solutions
   # problems: problem_id (document) -> { id: str }
-  # solutions: problem_id (document) -> 
+  # solutions: {problem_id} (document) -> 
   #   { solutions: [{ id: str, code: str, language: str, time: str, memory: str }] }
   return CmdResult(True, "Database initialized.")
 
@@ -69,24 +69,36 @@ def list_solutions(problem_id: str) -> CmdResult:
 
 # post a solution
 def post_solution(problem_id: str, solution_code: str, time: str, memory: str) -> CmdResult:
-  doc = db.collection("solutions").document(problem_id)
+  trans = db.transaction()
+  sol_doc = db.collection("solutions").document(problem_id)
+  pro_doc = db.collection("problems").document(problem_id)
   source_code, language = parse_sol_file(solution_code)
-  data = {
-    "solutions": firestore.firestore.ArrayUnion([{
-      "code": source_code,
-      "language": language,
-      "time": time,
-      "memory": memory,
-    }])
-  }
-  ref = doc.get();
-  if isinstance(ref, Awaitable):
-    raise ValueError("Unexpected Awaitable type for Firestore document get.")
-  if not ref.exists:
-    doc.set(data)
-  else:
-    doc.update(data)
-  return CmdResult(True, f"Solution for problem '{problem_id}' posted.")
+
+  @firestore.firestore.transactional
+  def post_in_transaction(trans, sol_doc, pro_doc):
+    data = {
+      "solutions": firestore.firestore.ArrayUnion([{
+        "code": source_code,
+        "language": language,
+        "time": time,
+        "memory": memory,
+      }])
+    }
+    sol_ss = sol_doc.get();
+    if isinstance(sol_ss, Awaitable):
+      raise ValueError("Unexpected Awaitable type for Firestore document get.")
+    if not sol_ss.exists:
+      trans.set(sol_doc, data)
+    else:
+      trans.update(sol_doc, data)
+    pro_ss = pro_doc.get();
+    if isinstance(pro_ss, Awaitable):
+      raise ValueError("Unexpected Awaitable type for Firestore document get.")
+    if not pro_ss.exists:
+      trans.set(pro_doc, { "id": problem_id })
+    return CmdResult(True, f"Solution for problem '{problem_id}' posted.")
+
+  return post_in_transaction(trans, sol_doc, pro_doc)
 
 # delete a solution
 def delete_solution(problem_id: str, solution_id: int) -> CmdResult:
