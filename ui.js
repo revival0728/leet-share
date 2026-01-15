@@ -2,32 +2,60 @@ console.log("ui.js loaded");
 
 const searchParams = new URLSearchParams(window.location.search);
 
-if (searchParams.has("p")) {
+if (searchParams.has("problemset")) {
+  setupProblemsetPage();
+} else if (searchParams.has("p")) {
   setupProblemPage();
 } else {
   setupHompage();
 }
 
-async function setupProblemPage() {
-  const t = document.querySelector("#problem-container-template");
-  fillProblemTemplate(t, {
-    id: "1234",
-    solution: `#include <stdio.h>\n\nint main() {\n    return 0;\n}`,
+function setupProblemsetPage() {
+  console.log("Setup problemset page");
+  const problemsetPage = fillProblemsetTemplate([
+    { id: "Two Sum" },
+    { id: "Add Two Numbers" },
+    { id: "Longest Substring Without Repeating Characters" },
+  ]);
+  const main = document.querySelector("main");
+  main.classList.remove("homepage");
+  main.classList.add("problemset-page");
+  main.innerHTML = "";
+  main.appendChild(problemsetPage);
+}
+
+function setupProblemPage() {
+  console.log("Setup problem page");
+  const problemPage = fillProblemTemplate({
+    id: "Two Sum",
+    solutions: [
+      {
+        language: "C",
+        time: "0ms",
+        memory: "3.45KB",
+        code: `#include <stdio.h>\n\nint main() {\n    return 0;\n}`,
+      },
+      {
+        language: "C",
+        time: "0ms",
+        memory: "3.45KB",
+        code: `#include <stdio.h>\n\nint main() {\n    return 0;\n}`,
+      },
+    ],
   });
-  t.content.querySelector("pre code");
-  const clone = document.importNode(t.content, true);
-  const main = document.querySelector("main.homepage");
+  const main = document.querySelector("main");
   main.classList.remove("homepage");
   main.classList.add("problem-page");
   main.innerHTML = "";
-  main.appendChild(clone);
-  hljs.highlightElement(document.querySelector(".problem-container pre code"));
+  main.appendChild(problemPage);
 }
 
 function setupHompage() {
-  document.querySelector("#go-daily").addEventListener("click", (event) => {
-    window.location.href = "/?p=daily";
-  });
+  document
+    .querySelector("#view-solutions")
+    .addEventListener("click", (event) => {
+      window.location.href = "/leet-share/?problemset";
+    });
 }
 
 function toggleTheme() {

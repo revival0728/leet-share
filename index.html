@@ -25,7 +25,6 @@
           >
         </span>
         <span>
-          <button>Login</button>
           <button id="theme-toggler">Light</button>
         </span>
       </nav>
@@ -35,10 +34,10 @@
         <h1 class="site-name">Leet<span class="second">Share</span></h1>
         <div style="text-align: center">
           <p>
-            LeetShare is a website for sharing your
+            LeetShare is a website for sharing my
             <a href="https://leetcode.com">leetcode</a> solutions.
           </p>
-          <p>Everyone can share their own solutions and view others.</p>
+          <p>They might not be the best, but I will try mine.</p>
         </div>
       </section>
       <search class="problem-search">
@@ -50,27 +49,65 @@
         <button class="submit">GO!</button>
       </search>
       <div>
-        <button id="go-daily" class="go-daily">Go Daily ➡️</button>
+        <button id="view-solutions" class="view-solutions">
+          View Solutions ➡️
+        </button>
       </div>
     </main>
     <footer>
-      <p>Made with ❤️ by revival0728</p>
+      <p>
+        <span
+          ><a href="https://github.com/revival0728/leet-share">GitHub</a></span
+        >
+        <span>Made by revival0728</span>
+      </p>
     </footer>
 
+    <template id="problemset-container-template">
+      <section class="problemset">
+        <h2>All Problems</h2>
+        <search class="problem-search">
+          <input
+            type="text"
+            placeholder="Search LeetCode problems..."
+            class="search-bar"
+          />
+          <button class="submit">GO!</button>
+        </search>
+        <div class="problem-list"></div>
+      </section>
+    </template>
+    <template id="problemset-element-template">
+      <article class="problem">
+        <span class="problem-id"></span>
+        <span>
+          <a class="problem-lnk">view on leetcode</a>
+          <a class="solution-lnk">view solution</a>
+        </span>
+      </article>
+    </template>
     <template id="problem-container-template">
-      <div class="problem-container">
-        <h2 class="problem-id">
-          <span>Problem ID: </span>
-          <span id="problem-id"></span>
-        </h2>
+      <section class="problem-container">
+        <h2 class="problem-id"></h2>
         <a class="problem-link" target="_blank" rel="noopener noreferrer"
           >View on LeetCode</a
         >
-        <pre><code></code></pre>
         <div class="solution-list"></div>
         <button class="view-solutions">View Other Solutions</button>
-      </div>
+      </section>
     </template>
+    <template id="solution-container-template">
+      <article class="solution-container">
+        <h3 class="language"></h3>
+        <p class="time">time: <span></span></p>
+        <p class="memory">memory: <span></span></p>
+        <details>
+          <summary>view solution</summary>
+          <pre><code></code></pre>
+        </details>
+      </article>
+    </template>
+
     <script src="utils.js"></script>
     <script src="ui.js"></script>
   </body>

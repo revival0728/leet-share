@@ -77,6 +77,16 @@ nav button {
   color: var(--font-color);
 }
 
+footer span:nth-of-type(n)::before {
+  content: " | ";
+  padding: 0 8px;
+}
+
+footer span:nth-of-type(1)::before {
+  content: none;
+  padding: 0;
+}
+
 .dark-mode nav.navbar {
   background-color: var(--dark-primary-color);
 }
@@ -164,7 +174,7 @@ search.problem-search button {
   color: var(--dark-font-color);
 }
 
-main.homepage .go-daily {
+main.homepage .view-solutions {
   font-size: min(4vh, 18px);
   padding: min(2vh, 10px) min(3vh, 16px);
   border: 2px solid var(--secondary-color);
@@ -173,7 +183,7 @@ main.homepage .go-daily {
   cursor: pointer;
 }
 
-.dark-mode main.homepage .go-daily {
+.dark-mode main.homepage .view-solutions {
   border: 2px solid var(--dark-secondary-color);
   background-color: var(--dark-secondary-color);
   color: var(--dark-font-color);
@@ -187,4 +197,61 @@ main.problem-page {
 
 main.problem-page .problem-container {
   width: 60%;
+}
+
+.problem-container h2 {
+  text-transform: capitalize;
+}
+
+.problem-container .solution-list {
+  display: flex;
+  flex-direction: column;
+  gap: min(1vh, 8px);
+  margin: 3vh 0 5vh 0;
+}
+
+.problem-container button.view-solutions {
+  font-size: 1.5vh;
+  padding: min(2vh, 10px) min(3vh, 16px);
+  border: 2px solid var(--secondary-color);
+  background-color: var(--secondary-color);
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 5vh;
+}
+
+.problem-container .solution-container {
+  margin: 1.5vh 0;
+}
+
+.solution-container summary {
+  cursor: pointer;
+}
+
+main.problemset-page {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+main.problemset-page .problemset {
+  width: 60%;
+}
+
+.problemset .problem-list {
+  display: flex;
+  flex-direction: column;
+  gap: min(1vh, 8px);
+  margin: 3vh 0 5vh 0;
+  align-items: center;
+}
+
+.problemset .problem-list .problem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: min(1vh, 8px);
+  border: 1px solid var(--secondary-color);
+  border-radius: 4px;
+  width: 95%;
 }
