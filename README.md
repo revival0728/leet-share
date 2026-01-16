@@ -133,7 +133,7 @@ You can deploy this repository on [GitHub Pages](https://pages.github.com)
 
 ## 📝 License
 
-This project is created and maintained by [revival0728](https://github.com/revival0728).
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🔗 Resources
 
