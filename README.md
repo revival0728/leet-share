@@ -1,6 +1,6 @@
 # LeetShare
 
-A platform for sharing and showcasing LeetCode problem solutions.
+A website for sharing and showcasing LeetCode problem solutions.
 
 ## 📁 Project Structure
 
